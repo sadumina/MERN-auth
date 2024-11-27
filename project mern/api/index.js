@@ -23,10 +23,10 @@ console.log("Connect to the MONOGODB");
 
     console.log(err);
 })
-app.listen(5000 , ()=>{
+app.listen(3000 , ()=>{
 
 
-    console.log('Server listening on Port 5000');
+    console.log('Server listening on Port 3000');
 });
 
 app.use("/api/user", userRoutes);
