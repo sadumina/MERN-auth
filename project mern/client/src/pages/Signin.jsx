@@ -18,7 +18,7 @@ export default function Signin() {
     try {
       dispatch(signInstart());
       
-      const res = await fetch(' /api/auth/signin' ,{
+      const res = await fetch('./api/auth/signin' ,{
       
         method :'POST',
         headers : {
