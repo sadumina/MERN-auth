@@ -6,12 +6,14 @@ import userRoutes from './routes/user.routes.js';
 import authRoutes from './routes/auth.routes.js';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
+import path from 'path';
 
 
 dotenv.config();
 
 const app = express();
 
+const _dirname =path.resolve();
 app.use(express.json());
 
 mongoose.connect(process.env.MONGODB)
@@ -24,6 +26,7 @@ console.log("Connect to the MONOGODB");
 
     console.log(err);
 })
+
 app.listen(3000 , ()=>{
 
 
@@ -33,6 +36,11 @@ app.listen(3000 , ()=>{
 app.use("/api/user", userRoutes);
 app.use("/api/auth",authRoutes);
 app.use(cookieParser());
+app.use(express.static(path.join(_dirname,'/client/dist')));
+
+app.get('*',(res,req)=> {
+    res.sendFile(path.join(_dirname, 'client' ,'/dist/','index.html')
+})
 
 app.use((err,req,res,next) => {
 
