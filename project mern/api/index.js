@@ -5,6 +5,7 @@ import { error } from 'console';
 import userRoutes from './routes/user.routes.js';
 import authRoutes from './routes/auth.routes.js';
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 
 
 dotenv.config();
@@ -31,6 +32,7 @@ app.listen(3000 , ()=>{
 
 app.use("/api/user", userRoutes);
 app.use("/api/auth",authRoutes);
+app.use(cookieParser());
 
 app.use((err,req,res,next) => {
 
